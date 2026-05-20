@@ -65,7 +65,7 @@ namespace Hospital
                 Console.WriteLine("\n--- LISTA DE PACIENTES ---");
                 for (int i = 0; i < PacienteNum; i++)
                 {
-                    string tipo = fila[i].Preferencial ? "[PREFERENCIAL]" : "[NORMAL]";
+                    string tipo = fila[i].Preferencial ? "[PREFERENCIAL]" : "[NORMAL]";     // ? e : funciona como if e else
                     Console.WriteLine("Posição {0} \t| Nome: {1,-15} \t| Idade: {2} \t| {3}",   //mostra os dados do paciente
                     i, fila[i].Nome, fila[i].Idade, tipo);
                 }
@@ -80,7 +80,7 @@ namespace Hospital
             }
             else
             {
-                Console.WriteLine($"\nAtendendo agora: {fila[0].Nome} ({fila[0].Idade} anos)");
+               Console.WriteLine(string.Format("\nAtendendo agora: {0} ({1} anos)", fila[0].Nome, fila[0].Idade));
 
                 // Move todos os restantes uma posição para a frente
                 for (int i = 0; i < PacienteNum - 1; i++)
