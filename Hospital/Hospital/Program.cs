@@ -10,7 +10,7 @@ namespace Hospital
     {
         static void Main(string[] args)
         {
-            string op = "w";
+            string op = "";
             Fila fila = new Fila();
 
             while (op != "q" && op != "Q")
