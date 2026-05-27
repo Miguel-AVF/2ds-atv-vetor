@@ -29,20 +29,20 @@ namespace Hospital
 
             if (paciente.Preferencial)
             {
-                // Encontra a posição correta: após o último idoso, mas antes do primeiro jovem
-                int posicaoInsercao = 0;
-                while (posicaoInsercao < PacienteNum && fila[posicaoInsercao].Preferencial)
+                // se o paciente for preferencial manda ele pro topo da fila
+                int posicao = 0;
+                while (posicao < PacienteNum && fila[posicao].Preferencial)
                 {
-                    posicaoInsercao++;
+                    posicao++;
                 }
 
                 // Arrasta todo mundo que está daquela posição em diante para trás
-                for (int i = PacienteNum; i > posicaoInsercao; i--)
+                for (int i = PacienteNum; i > posicao; i--)
                 {
                     fila[i] = fila[i - 1];
                 }
 
-                fila[posicaoInsercao] = paciente;
+                fila[posicao] = paciente;
             }
             else
             {
@@ -63,10 +63,10 @@ namespace Hospital
             else
             {
                 Console.WriteLine("\n--- LISTA DE PACIENTES ---");
-                for (int i = 0; i < PacienteNum; i++)
+                for (int i = 0; i < PacienteNum; i++)              //mostra os dados do paciente
                 {
                     string tipo = fila[i].Preferencial ? "[PREFERENCIAL]" : "[NORMAL]";     // ? e : funciona como if e else
-                    Console.WriteLine("Posição {0} \t| Nome: {1,-15} \t| Idade: {2} \t| {3}",   //mostra os dados do paciente
+                    Console.WriteLine("Posição {0} \t| Nome: {1,-15} \t| Idade: {2} \t| {3}",   //-15 espaçamento entre as informações
                     i, fila[i].Nome, fila[i].Idade, tipo);
                 }
             }
@@ -80,7 +80,7 @@ namespace Hospital
             }
             else
             {
-               Console.WriteLine(string.Format("\nAtendendo agora: {0} ({1} anos)", fila[0].Nome, fila[0].Idade));
+                Console.WriteLine("\nAtendendo agora: " + fila[0].Nome + " (" + fila[0].Idade + " anos)");
 
                 // Move todos os restantes uma posição para a frente
                 for (int i = 0; i < PacienteNum - 1; i++)
@@ -88,7 +88,7 @@ namespace Hospital
                     fila[i] = fila[i + 1];
                 }
 
-                fila[PacienteNum - 1] = null; // Limpa a última posição que sobrou
+                fila[PacienteNum - 1] = null; // Limpa a última posição que sobrou / null significa que esta vazil
                 PacienteNum--;
 
                 Console.WriteLine("Próximo paciente pronto para atendimento.");
@@ -103,7 +103,7 @@ namespace Hospital
                 return;
             }
 
-            Listar(); // Mostra a lista
+            Listar(); // Mostra a lista pra escolher de que vai trocar as informações
             Console.Write("\nDigite o número da posição do paciente que deseja alterar: ");
 
             int posicao = int.Parse(Console.ReadLine());
@@ -126,7 +126,7 @@ namespace Hospital
             }
             else
             {
-                Console.WriteLine("\nPosição inválida!"); //caso marque a posição errada
+                Console.WriteLine("\nPosição inválida!"); //caso marque uma posição que não existe
             }
         }
     }
