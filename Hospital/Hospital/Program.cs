@@ -15,8 +15,6 @@ namespace Hospital
 
             while (op != "q" && op != "Q")
             {
-                Console.Clear();              //Menu
-
                 Console.WriteLine("===================================");
                 Console.WriteLine(" SISTEMA DE FILA DO HOSPITAL ");
                 Console.WriteLine("===================================");
